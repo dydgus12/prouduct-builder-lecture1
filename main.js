@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const numbersContainer = document.getElementById('numbers');
     const generateButton = document.getElementById('generate');
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    updateToggleText(savedTheme);
 
     function generateNumbers() {
         const numbers = new Set();
@@ -21,9 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function updateToggleText(theme) {
+        themeToggle.textContent = theme === 'dark' ? '라이트 모드' : '다크 모드';
+    }
+
     generateButton.addEventListener('click', () => {
         const newNumbers = generateNumbers();
         displayNumbers(newNumbers);
+    });
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateToggleText(newTheme);
     });
 
     // Initial generation

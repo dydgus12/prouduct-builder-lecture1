@@ -1,23 +1,47 @@
+:root {
+    --bg-color: #f0f2f5;
+    --container-bg: #fff;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --button-bg: #008CBA;
+    --button-hover: #005f7a;
+    --number-bg: #4CAF50;
+    --number-text: white;
+}
+
+[data-theme='dark'] {
+    --bg-color: #1a1a1a;
+    --container-bg: #2d2d2d;
+    --text-color: #f0f2f5;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --button-bg: #3498db;
+    --button-hover: #2980b9;
+    --number-bg: #27ae60;
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f2f5;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-    background-color: #fff;
+    background-color: var(--container-bg);
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--shadow-color);
     text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 h1 {
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 1.5rem;
 }
 
@@ -32,17 +56,18 @@ h1 {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--number-bg);
+    color: var(--number-text);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .generate-button {
-    background-color: #008CBA;
+    background-color: var(--button-bg);
     color: white;
     padding: 0.8rem 1.5rem;
     border: none;
@@ -53,5 +78,18 @@ h1 {
 }
 
 .generate-button:hover {
-    background-color: #005f7a;
+    background-color: var(--button-hover);
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
 }
