@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로또 번호 추첨기</title>
+    <title>인공지능 동물상 테스트</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button id="theme-toggle" class="theme-toggle">다크 모드</button>
     <div class="container">
+        <h1>인공지능 동물상 테스트</h1>
+        
+        <div class="animal-test-section">
+            <div id="webcam-container"></div>
+            <div id="label-container" class="label-container"></div>
+            <button type="button" id="start-test" class="generate-button">테스트 시작 (카메라 권한 필요)</button>
+            <p class="info-text">얼굴을 카메라에 비춰주세요!</p>
+        </div>
+
+        <hr>
+
         <h1>로또 번호 추첨기</h1>
         <div id="numbers" class="numbers-container"></div>
         <button id="generate" class="generate-button">번호 생성</button>
@@ -38,16 +49,7 @@
             <h3>댓글</h3>
             <div id="disqus_thread"></div>
             <script>
-                /**
-                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                /*
-                var disqus_config = function () {
-                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
-                */
-                (function() { // DON'T EDIT BELOW THIS LINE
+                (function() {
                 var d = document, s = d.createElement('script');
                 s.src = 'https://productbuilder-mvi300qkwi.disqus.com/embed.js';
                 s.setAttribute('data-timestamp', +new Date());
@@ -57,6 +59,10 @@
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
     </div>
+
+    <!-- AI Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
