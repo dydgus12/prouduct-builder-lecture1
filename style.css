@@ -7,6 +7,7 @@
     --button-hover: #005f7a;
     --number-bg: #4CAF50;
     --number-text: white;
+    --input-border: #ccc;
 }
 
 [data-theme='dark'] {
@@ -17,6 +18,7 @@
     --button-bg: #3498db;
     --button-hover: #2980b9;
     --number-bg: #27ae60;
+    --input-border: #444;
 }
 
 body {
@@ -26,9 +28,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     transition: background-color 0.3s, color 0.3s;
+    padding: 2rem 0;
 }
 
 .container {
@@ -38,6 +41,8 @@ body {
     box-shadow: 0 4px 8px var(--shadow-color);
     text-align: center;
     transition: background-color 0.3s, box-shadow 0.3s;
+    width: 90%;
+    max-width: 400px;
 }
 
 h1 {
@@ -75,6 +80,7 @@ h1 {
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s;
+    margin-bottom: 1rem;
 }
 
 .generate-button:hover {
@@ -92,4 +98,67 @@ h1 {
     border: 1px solid var(--text-color);
     border-radius: 0.5rem;
     transition: background-color 0.3s, color 0.3s;
+}
+
+/* Contact Form Styles */
+.contact-section {
+    margin-top: 2rem;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--shadow-color);
+    margin: 2rem 0;
+}
+
+.contact-section h3 {
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--input-border);
+    border-radius: 0.4rem;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.submit-button {
+    width: 100%;
+    background-color: var(--number-bg);
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    filter: brightness(0.9);
 }
