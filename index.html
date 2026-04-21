@@ -12,10 +12,18 @@
         <h1>인공지능 동물상 테스트</h1>
         
         <div class="animal-test-section">
-            <div id="webcam-container"></div>
+            <div class="upload-container">
+                <input type="file" id="image-upload" accept="image/*" class="file-input">
+                <label for="image-upload" class="upload-label">
+                    <span class="upload-icon">📸</span>
+                    <p>사진을 선택하거나 업로드하세요</p>
+                </label>
+            </div>
+            <div id="image-preview-container" class="preview-container" style="display: none;">
+                <img id="face-image" src="#" alt="your image" />
+            </div>
             <div id="label-container" class="label-container"></div>
-            <button type="button" id="start-test" class="generate-button">테스트 시작 (카메라 권한 필요)</button>
-            <p class="info-text">얼굴을 카메라에 비춰주세요!</p>
+            <p class="info-text">사진을 업로드하면 인공지능이 분석을 시작합니다.</p>
         </div>
 
         <hr>

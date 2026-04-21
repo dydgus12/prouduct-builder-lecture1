@@ -58,54 +58,90 @@ h1 {
     margin-bottom: 2rem;
 }
 
-#webcam-container {
-    margin: 1rem auto;
-    border-radius: 10px;
-    overflow: hidden;
+.upload-container {
+    margin: 1rem 0;
+}
+
+.file-input {
+    display: none;
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border: 2px dashed var(--input-border);
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-label:hover {
+    background-color: var(--bg-color);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.preview-container {
+    margin: 1.5rem auto;
     width: 200px;
     height: 200px;
-    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+#face-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .label-container {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 .label-wrapper {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-size: 1rem;
 }
 
 .label-wrapper span:first-child {
-    width: 60px;
+    width: 70px;
     text-align: left;
+    font-weight: bold;
 }
 
 .label-wrapper span:last-child {
-    width: 40px;
+    width: 45px;
     text-align: right;
 }
 
 .progress-bar {
     flex-grow: 1;
-    height: 10px;
+    height: 12px;
     background-color: var(--progress-bg);
-    border-radius: 5px;
+    border-radius: 6px;
     overflow: hidden;
 }
 
 .progress {
     height: 100%;
     background-color: var(--button-bg);
-    transition: width 0.2s ease;
+    transition: width 0.5s ease;
 }
 
 .info-text {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     opacity: 0.7;
+    margin-top: 1rem;
 }
 
 /* Lotto Section */

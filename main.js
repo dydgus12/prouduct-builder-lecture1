@@ -47,24 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     displayNumbers(generateNumbers());
 
-    // Teachable Machine Logic
-    const URL = "https://teachablemachine.withgoogle.com/models/zuBj0AxO0/";
-    let model, webcam, labelContainer, maxPredictions;
+    // Teachable Machine Logic (File Upload Version)
+    const URL_MODEL = "https://teachablemachine.withgoogle.com/models/zuBj0AxO0/";
+    let model, labelContainer, maxPredictions;
 
-    async function init() {
-        const modelURL = URL + "model.json";
-        const metadataURL = URL + "metadata.json";
-
+    async function loadModel() {
+        const modelURL = URL_MODEL + "model.json";
+        const metadataURL = URL_MODEL + "metadata.json";
         model = await tmImage.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
-
-        const flip = true;
-        webcam = new tmImage.Webcam(200, 200, flip);
-        await webcam.setup();
-        await webcam.play();
-        window.requestAnimationFrame(loop);
-
-        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        
         labelContainer = document.getElementById("label-container");
         labelContainer.innerHTML = '';
         for (let i = 0; i < maxPredictions; i++) {
@@ -74,14 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    async function loop() {
-        webcam.update();
-        await predict();
-        window.requestAnimationFrame(loop);
-    }
-
     async function predict() {
-        const prediction = await model.predict(webcam.canvas);
+        const image = document.getElementById('face-image');
+        const prediction = await model.predict(image);
         for (let i = 0; i < maxPredictions; i++) {
             const className = prediction[i].className;
             const probability = (prediction[i].probability * 100).toFixed(0);
@@ -98,9 +85,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const startButton = document.getElementById('start-test');
-    startButton.addEventListener('click', () => {
-        startButton.style.display = 'none';
-        init();
+    const imageUpload = document.getElementById('image-upload');
+    const faceImage = document.getElementById('face-image');
+    const previewContainer = document.getElementById('image-preview-container');
+
+    imageUpload.addEventListener('change', async (e) => {
+        if (!model) await loadModel();
+        
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                faceImage.src = event.target.result;
+                previewContainer.style.display = 'block';
+                faceImage.onload = async () => {
+                    await predict();
+                };
+            };
+            reader.readAsDataURL(file);
+        }
     });
+
+    // Initial model load to speed up first interaction
+    loadModel();
 });
